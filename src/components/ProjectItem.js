@@ -1,15 +1,20 @@
-import React from "react";
-
-function ProjectItem({ name, about, technologies }) {
+function ProjectItem({ project, technologies }) {
   return (
-    <div className="project-item">
-      <h3>{name}</h3>
-      <p>{about}</p>
-      <div className="technologies">
-        {/* render a <span> for each technology in the technologies array */}
-      </div>
+    <div key={project?.id}>
+      {project ? (
+        <>
+          <h2>{project.title}</h2>
+          <p>{project.description}</p>
+          <h3>Technologies:</h3>
+          <div>
+            {technologies.map((technology) => (
+              <span key={technology}>{technology}</span>
+            ))}
+          </div>
+        </>
+      ) : (
+        <p>Project data is not available.</p>
+      )}
     </div>
   );
 }
-
-export default ProjectItem;

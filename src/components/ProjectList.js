@@ -1,14 +1,18 @@
-import React from "react";
-import ProjectItem from "./ProjectItem";
+import React from 'react';
 
-function ProjectList({ projects }) {
-  console.log(projects);
+function ProjectItem({ project }) {
   return (
-    <div id="projects">
-      <h2>My Projects</h2>
-      <div id="project-list">{/* render ProjectItem components here */}</div>
+    <div key={project.id}>
+      <h2>{project.title}</h2>
+      <p>{project.description}</p>
+      <h3>Technologies:</h3>
+      <div>
+        {project.technologies.map((technology, index) => (
+          <span key={index}>{technology}</span>
+        ))}
+      </div>
     </div>
   );
 }
 
-export default ProjectList;
+export default ProjectItem;
